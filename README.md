@@ -9,20 +9,24 @@ Siritami Morphe Patches provides a collection of patches for the Facebook Androi
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
+> **[v1.0.0-dev.1](https://github.com/siritami/morphe-patches/releases/tag/v1.0.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;3 patches total
+<details open>
+<summary>📦 Facebook&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
 
-<!-- Do not modify this section by hand. The patch list is generated when release.yml creates a new release.
-     
-     If you wish for the patches list to be collapsed, then remove the word 'EXPANDED' from the comment tag above.
+**🎯 Supported versions:**
 
-     If you wish to manually keep this list updated then remove the PATCHES_START and PATCHES_END 
-     comment blocks entirely. -->
+| 559.1.0.52.72 |
+| :---: |
 
-#### A list of your patches will be automatically shown here after your first patches release is created.
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Disable Audience Network ads](#disable-audience-network-ads) | Prevents Audience Network ads from loading by finishing ad activities immediately. |  |
+| [Disable video ad breaks](#disable-video-ad-breaks) | Disables mid-roll and post-roll ad breaks in videos and reels by preventing ad break Litho components and video ad CTA buttons from rendering. |  |
+| [Hide sponsored posts](#hide-sponsored-posts) | Hides sponsored/promoted posts from the Facebook feed by preventing sponsored Litho components from rendering. |  |
 
-&nbsp;
+</details>
 
-<!-- The patches end tag is intentionally placed here so the first release will cleanup 
-     this readme of all developer instructions above. -->
 <!-- PATCHES_END -->
 
 #### How to use these patches
