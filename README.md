@@ -9,7 +9,7 @@ Siritami Morphe Patches provides a collection of patches for the Facebook Androi
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.0.0-dev.1](https://github.com/siritami/morphe-patches/releases/tag/v1.0.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;3 patches total
+> **[v1.0.0-dev.2](https://github.com/siritami/morphe-patches/releases/tag/v1.0.0-dev.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;3 patches total
 <details open>
 <summary>📦 Facebook&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
 <br>
@@ -22,8 +22,8 @@ Siritami Morphe Patches provides a collection of patches for the Facebook Androi
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Disable Audience Network ads](#disable-audience-network-ads) | Prevents Audience Network ads from loading by finishing ad activities immediately. |  |
-| [Disable video ad breaks](#disable-video-ad-breaks) | Disables mid-roll and post-roll ad breaks in videos and reels by preventing ad break Litho components and video ad CTA buttons from rendering. |  |
-| [Hide sponsored posts](#hide-sponsored-posts) | Hides sponsored/promoted posts from the Facebook feed by preventing sponsored Litho components from rendering. |  |
+| [Disable video and reel ads](#disable-video-and-reel-ads) | Disables instream banner ads, reels banner ads, reels floating CTA pills, and game ad requests. |  |
+| [Hide sponsored posts](#hide-sponsored-posts) | Hides sponsored/promoted posts from the Facebook home feed. Blocks the sponsored story pool and sponsored story holder. |  |
 
 </details>
 

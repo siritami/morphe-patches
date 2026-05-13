@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-dev.1",
+  "version": "1.0.0-dev.2",
   "patches": [
     {
       "name": "Disable Audience Network ads",
@@ -27,8 +27,8 @@
       "options": []
     },
     {
-      "name": "Disable video ad breaks",
-      "description": "Disables mid-roll and post-roll ad breaks in videos and reels by preventing ad break Litho components and video ad CTA buttons from rendering.",
+      "name": "Disable video and reel ads",
+      "description": "Disables instream banner ads, reels banner ads, reels floating CTA pills, and game ad requests.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -53,7 +53,7 @@
     },
     {
       "name": "Hide sponsored posts",
-      "description": "Hides sponsored/promoted posts from the Facebook feed by preventing sponsored Litho components from rendering.",
+      "description": "Hides sponsored/promoted posts from the Facebook home feed. Blocks the sponsored story pool and sponsored story holder.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

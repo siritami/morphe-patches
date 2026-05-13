@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-05-13T07:34:02",
-  "description": "# 1.0.0-dev.1 (2026-05-13)\n\n\n### Features\n\n* bump version ([a470152](https://github.com/siritami/morphe-patches/commit/a4701526f7aae936138bb09cd299fb31bcf00247))",
-  "download_url": "https://github.com/siritami/morphe-patches/releases/download/v1.0.0-dev.1/patches-1.0.0-dev.1.mpp",
+  "created_at": "2026-05-13T08:03:32",
+  "description": "# [1.0.0-dev.2](https://github.com/siritami/morphe-patches/compare/v1.0.0-dev.1...v1.0.0-dev.2) (2026-05-13)\n\n\n### Bug Fixes\n\n* bug ([d54f4ac](https://github.com/siritami/morphe-patches/commit/d54f4ac867eb9aa12e365dbba60c11e170f664a2))\n* bugs ([e895fdc](https://github.com/siritami/morphe-patches/commit/e895fdc07c73aff850f3d2cc82e82b28ab76d46d))",
+  "download_url": "https://github.com/siritami/morphe-patches/releases/download/v1.0.0-dev.2/patches-1.0.0-dev.2.mpp",
   "signature_download_url": "",
-  "version": "1.0.0-dev.1"
+  "version": "1.0.0-dev.2"
 }
