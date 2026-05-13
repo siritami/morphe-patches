@@ -5,8 +5,8 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 
-// Fingerprint for AudienceNetworkExportedActivity.onCreate()
-// This activity handles Audience Network ad rendering for the Facebook app.
+// ─── Audience Network activities ────────────────────────────────────────────
+
 object AudienceNetworkExportedActivityOnCreateFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
@@ -22,8 +22,6 @@ object AudienceNetworkExportedActivityOnCreateFingerprint : Fingerprint(
     }
 )
 
-// Fingerprint for AudienceNetworkRemoteActivity.onCreate()
-// This activity handles remote Audience Network ad display.
 object AudienceNetworkRemoteActivityOnCreateFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC),
     returnType = "V",
@@ -33,71 +31,126 @@ object AudienceNetworkRemoteActivityOnCreateFingerprint : Fingerprint(
     }
 )
 
-// Fingerprint for the AdBreakPostRollEndingScreenComponent.onCreateLayout (A1J method)
-// This Litho component renders the post-roll ad break ending screen in videos.
-// Original class: X.C2022mJh (renamed from X.mJh)
-object AdBreakPostRollComponentFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "L",
+// ─── Sponsored pool (feed ads) ──────────────────────────────────────────────
+// The SponsoredPoolContainerAdapter.add() method adds sponsored stories to the pool.
+// Returning false prevents ads from entering the feed.
+
+object SponsoredPoolAddFingerprint : Fingerprint(
+    returnType = "Z",
     filters = listOf(
-        string("ad_break_post_roll_ending_screen_appear_transition_key"),
+        string("SponsoredPoolContainerAdapter"),
     ),
 )
 
-// Fingerprint for the AdBreakInPlayerAnimatedSingleImageComponent.onCreateLayout (A1J method)
-// This Litho component renders in-player ad break images during video playback.
-// Original class: X.C2021mJg (renamed from X.mJg)
-object AdBreakInPlayerImageComponentFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "L",
+// ─── Sponsored story holder ─────────────────────────────────────────────────
+// Returns the next sponsored FeedUnitEdge; returning null = no sponsored story.
+
+object SponsoredStoryNextFingerprint : Fingerprint(
     filters = listOf(
-        string("AdBreakInPlayerAnimatedSingleImageComponentSpec"),
+        string("FeedSponsoredStoryHolder.onPositionReset"),
     ),
 )
 
-// Fingerprint for the VideoAdsCallToActionAttachmentActionButtonComponent.onCreateLayout
-// This Litho component renders the CTA button for video/reel ads.
-// Original class: X.mIN
-object VideoAdsCtaButtonComponentFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "L",
+// ─── Instream banner eligibility ────────────────────────────────────────────
+// Returns whether instream banner ads should display; return false to block.
+
+object InstreamBannerEligibilityFingerprint : Fingerprint(
+    returnType = "Z",
     filters = listOf(
-        string("VideoAdsCallToActionAttachmentActionButtonComponent"),
+        string("InstreamAdIdleWithBannerState"),
     ),
 )
 
-// Fingerprint for the SearchResultsSponsoredMultiStorySection component
-// This Litho section renders a group of sponsored stories in feed/search results.
-// Original class: X.C2126mNh (renamed from X.mNh)
-object SponsoredMultiStorySectionFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "L",
+// ─── Reels indicator pill ───────────────────────────────────────────────────
+// Controls floating CTA pills on reels; return false to hide.
+
+object IndicatorPillAdEligibilityFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.STATIC),
+    returnType = "Z",
     filters = listOf(
-        string("SearchResultsSponsoredMultiStorySection"),
+        string("ReelsAdsFloatingCtaPlugin"),
     ),
 )
 
-// Fingerprint for the SearchResultsSponsoredStoryVideoComponent.onCreateLayout
-// This Litho component renders individual sponsored story videos.
-// Original class: X.mIO
-object SponsoredStoryVideoComponentFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "L",
+// ─── Reels banner render ────────────────────────────────────────────────────
+// The Litho component that renders banner ads on reels; return null to hide.
+
+object ReelsBannerAdsComponentFingerprint : Fingerprint(
     filters = listOf(
-        string("SearchResultsSponsoredStoryVideoComponent"),
+        string("ReelsBannerAdsComponent"),
     ),
 )
 
-// Fingerprint for the BauToMultiAdsSplitViewActivity
-// This activity handles multi-ad split view display.
-object MultiAdsSplitViewActivityFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+object ReelsBannerAdsNativeComponentFingerprint : Fingerprint(
+    filters = listOf(
+        string("ReelsBannerAdsNativeComponent"),
+    ),
+)
+
+// ─── Story ads in-disc (insertion trigger) ──────────────────────────────────
+// The method that triggers ad insertion into stories; no-op to block.
+
+object StoryAdsInsertionTriggerFingerprint : Fingerprint(
     returnType = "V",
-    parameters = listOf("Landroid/os/Bundle;"),
     filters = listOf(
-        string("multi_ads_unit_id"),
+        string("ads_insertion"),
     ),
-    custom = { _, classDef ->
-        classDef.type == "Lcom/facebook/feedplugins/bautosplitview/activity/BauToMultiAdsSplitViewActivity;"
-    }
+)
+
+// ─── Story ads deletion / provider ──────────────────────────────────────────
+// The ads_deletion method in the story ad provider class.
+
+object StoryAdsDeletionFingerprint : Fingerprint(
+    filters = listOf(
+        string("ads_deletion"),
+    ),
+)
+
+// ─── Game ad request methods ────────────────────────────────────────────────
+// Methods that handle game ad async requests; return-void to block.
+
+object GameAdInterstitialRequestFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        string("Invalid JSON content received by onGetInterstitialAdAsync: "),
+    ),
+)
+
+object GameAdRewardedVideoRequestFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        string("Invalid JSON content received by onRewardedVideoAsync: "),
+    ),
+)
+
+object GameAdRewardedInterstitialRequestFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        string("Invalid JSON content received by onGetRewardedInterstitialAsync: "),
+    ),
+)
+
+object GameAdLoadRequestFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        string("Invalid JSON content received by onLoadAdAsync: "),
+    ),
+)
+
+object GameAdShowRequestFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        string("Invalid JSON content received by onShowAdAsync: "),
+    ),
+)
+
+// ─── Reels list builder ─────────────────────────────────────────────────────
+// The method that appends stories to the reels list; contains ad filtering logic.
+
+object ReelsListBuilderFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.STATIC),
+    returnType = "V",
+    filters = listOf(
+        string("Non ads story fall into ads rendering logic, StoryType=%s, StoryId=%s"),
+    ),
 )
