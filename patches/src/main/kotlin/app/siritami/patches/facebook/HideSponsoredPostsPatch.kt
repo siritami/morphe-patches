@@ -14,8 +14,6 @@ val hideSponsoredPostsPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_FACEBOOK)
 
     execute {
-        // Block sponsored stories from entering the feed pool.
-        // SponsoredPoolContainerAdapter.add() → return false
         SponsoredPoolAddFingerprint.method.addInstructions(
             0,
             """
