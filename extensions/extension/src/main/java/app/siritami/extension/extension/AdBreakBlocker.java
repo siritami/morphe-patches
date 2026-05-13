@@ -10,11 +10,6 @@ package app.siritami.extension.extension;
 @SuppressWarnings("unused")
 public class AdBreakBlocker {
 
-    /**
-     * Determines whether an ad break should be shown during video playback.
-     *
-     * @return true to show the ad break (normal behavior), false to skip it.
-     */
     public static boolean shouldShowAdBreak() {
         return false;
     }
