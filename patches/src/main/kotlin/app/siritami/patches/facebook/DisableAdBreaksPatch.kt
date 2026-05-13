@@ -8,7 +8,7 @@ import app.siritami.patches.shared.Constants.COMPATIBILITY_FACEBOOK
 val disableAdBreaksPatch = bytecodePatch(
     name = "Disable video and reel ads",
     description = "Disables instream banner ads, reels banner ads, reels floating CTA pills, " +
-        "and game ad requests. Ported from NexAlloy Xposed hooks.",
+        "and game ad requests.",
     default = true
 ) {
     compatibleWith(COMPATIBILITY_FACEBOOK)
