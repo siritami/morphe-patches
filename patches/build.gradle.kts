@@ -1,13 +1,13 @@
-group = "app.template"
+group = "app.siritami"
 
 patches {
     about {
-        name = "UserXYZ Patches"
-        description = "Patches for apps I like"
-        source = "git@github.com:UserXYZ/morphe-patches.git"
-        author = "Awesome dev"
-        contact = "na"
-        website = "na"
+        name = "Siritami Patches"
+        description = "Patches for Facebook app"
+        source = "git@github.com:siritami/morphe-patches.git"
+        author = "siritami"
+        contact = "https://github.com/siritami"
+        website = "https://github.com/siritami/morphe-patches"
         license = "GPLv3"
     }
 }
